@@ -1,27 +1,14 @@
 "use client";
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Link } from "@chakra-ui/next-js";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 
 export default function Home() {
   return (
-    <div>
-      <Grid
-        templateAreas={{
-          base: `"nav" "main"`,
-          lg: `"nav nav" "aside main"`, //1024px breakpoint
-        }}
-      >
-        <GridItem area={"nav"} bg="orange">
-          Nav
-        </GridItem>
-        <Show above="lg">
-          <GridItem area={"aside"} bg="yellow">
-            Aside
-          </GridItem>
-        </Show>
-        <GridItem area={"main"} bg="dodgerblue">
-          Main
-        </GridItem>
-      </Grid>
-    </div>
+    <>
+      <Link href="/about" color="blue.400" _hover={{ color: "blue.500" }}>
+        About
+      </Link>
+      <Button colorScheme="blue">Button</Button>
+    </>
   );
 }
