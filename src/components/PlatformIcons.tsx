@@ -1,4 +1,4 @@
-import { HStack, Image, Text, Icon } from "@chakra-ui/react";
+import { HStack, Icon } from "@chakra-ui/react";
 import {
   IoLogoPlaystation,
   IoLogoWindows,
