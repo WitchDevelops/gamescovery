@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import apiClient from "@/lib/services/apiClient";
 import { CanceledError } from "axios";
+import { Game } from "@/types/cardTypes";
 
-interface Game {
-  id: number;
-  name: string;
-}
 interface FetchGamesResponse {
   count: number;
   results: Game[];
