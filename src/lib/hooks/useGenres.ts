@@ -1,12 +1,5 @@
 import { useData } from "@/lib/hooks/useData";
-
-export interface Genre {
-  id: number;
-  name: string;
-  slug: string;
-  games_count: number;
-  image_background: string;
-}
+import { Genre } from "@/types/genreTypes";
 
 export const useGenres = () => {
   return useData<Genre>("/genres");

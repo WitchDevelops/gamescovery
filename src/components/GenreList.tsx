@@ -1,10 +1,15 @@
 import React from "react";
 import { useGenres } from "@/lib/hooks/useGenres";
-import { HStack, Text, List, ListItem, Image } from "@chakra-ui/react";
+import { HStack, List, ListItem, Image, Button } from "@chakra-ui/react";
 import { getCroppedImgUrl } from "@/lib/services/imageResized";
 import { GenreItemSkeleton } from "@/components/GenreItemSkeleton";
+import { Genre } from "@/types/genreTypes";
 
-export const GenreList = () => {
+interface GenreListProps {
+  onGenreSelect: (genre: Genre) => void;
+}
+
+export const GenreList: React.FC<GenreListProps> = ({ onGenreSelect }) => {
   const { data: genres, isLoading, error } = useGenres();
   const skeletons = [1, 2, 3, 4, 5, 6];
 
@@ -25,7 +30,15 @@ export const GenreList = () => {
               borderRadius={8}
               objectFit="cover"
             />
-            <Text fontWeight="bold">{genre.name}</Text>
+            <Button
+              onClick={() => {
+                onGenreSelect(genre);
+              }}
+              fontSize={"lg"}
+              variant={"link"}
+            >
+              {genre.name}
+            </Button>
           </HStack>
         </ListItem>
       ))}
