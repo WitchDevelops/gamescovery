@@ -2,7 +2,7 @@ import React from "react";
 import { useGenres } from "@/lib/hooks/useGenres";
 
 export const GenreList = () => {
-  const { genres } = useGenres();
+  const { data: genres } = useGenres();
   return (
     <ul>
       {genres.map((genre) => (
