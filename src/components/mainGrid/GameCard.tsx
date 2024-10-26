@@ -3,10 +3,11 @@ import {
   Card,
   CardBody,
   Heading,
-  Image,
+  // Image,
   HStack,
   VStack,
 } from "@chakra-ui/react";
+import Image from "next/image";
 
 import { PlatformIcons } from "@/components/atoms/PlatformIcons";
 import { MetacriticScore } from "@/components/atoms/MetacriticScore";
@@ -18,7 +19,17 @@ interface GameCardProps {
 export const GameCard: React.FC<GameCardProps> = ({ game }) => {
   return (
     <Card height={"100%"}>
-      <Image src={getCroppedImgUrl(game.background_image)} alt={game.name} />
+      <div >
+        <Image
+          src={getCroppedImgUrl(game.background_image)}
+          alt={game.name}
+          width={600}
+          height={400}
+          placeholder={"blur"}
+          blurDataURL={getCroppedImgUrl(game.background_image)}
+          style={{aspectRatio: "6/4", objectFit: "contain"}}
+        />
+      </div>
       <CardBody>
         <VStack
           justifyContent={"space-between"}
