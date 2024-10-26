@@ -8,6 +8,7 @@ import { GameGrid } from "@/components/mainGrid/GameGrid";
 import { GenreList } from "@/components/sideBar/GenreList";
 import { PlatformSelector } from "@/components/sortingDropdown/PlatformSelector";
 import { SortSelector } from "@/components/sortingDropdown/SortSelector";
+import { GameHeading } from "@/components/atoms/GameHeading";
 
 export default function Home() {
   const [searchParams, setSearchParams] = useState<GameQuery>({} as GameQuery);
@@ -42,6 +43,7 @@ export default function Home() {
           </GridItem>
         </Show>
         <GridItem area={"main"} paddingX={6}>
+          <GameHeading title={searchParams} />
           <HStack marginBottom={6} spacing={4}>
             <PlatformSelector
               selectedPlatform={searchParams.platform}
