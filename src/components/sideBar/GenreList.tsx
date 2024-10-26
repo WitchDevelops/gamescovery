@@ -13,7 +13,7 @@ export const GenreList: React.FC<GenreListProps> = ({
   onGenreSelect,
   selectedGenre,
 }) => {
-  const { data: genres, isLoading, error } = useGenres();
+  const { data, isLoading, error } = useGenres();
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   return (
@@ -23,7 +23,7 @@ export const GenreList: React.FC<GenreListProps> = ({
       {isLoading &&
         skeletons.map((skeleton) => <GenreItemSkeleton key={skeleton} />)}
 
-      {genres.map((genre) => (
+      {data.map((genre) => (
         <ListItem key={genre.id} paddingY={1}>
           <Button
             onClick={() => {
