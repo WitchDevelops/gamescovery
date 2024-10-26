@@ -2,7 +2,7 @@ import React from "react";
 import { useGenres } from "@/lib/hooks/useGenres";
 import { HStack, List, ListItem, Text, Image, Button } from "@chakra-ui/react";
 import { getCroppedImgUrl } from "@/lib/services/imageResized";
-import { GenreItemSkeleton } from "@/components/GenreItemSkeleton";
+import { GenreItemSkeleton } from "@/components/sideBar/GenreItemSkeleton";
 import { Genre } from "@/types/genreTypes";
 
 interface GenreListProps {

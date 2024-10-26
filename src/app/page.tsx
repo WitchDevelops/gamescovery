@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Grid, GridItem, Show } from "@chakra-ui/react";
-import { Navbar } from "@/components/Navbar";
-import { GameGrid } from "@/components/GameGrid";
-import { GenreList } from "@/components/GenreList";
+import { Grid, GridItem, Show, VStack } from "@chakra-ui/react";
+
+import { Navbar } from "@/components/navigation/Navbar";
+import { GameGrid } from "@/components/mainGrid/GameGrid";
+import { GenreList } from "@/components/sideBar/GenreList";
 import { Genre } from "@/types/genreTypes";
+import { PlatformSelector } from "@/components/sortingDropdown/PlatformSelector";
 
 export default function Home() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
@@ -32,8 +34,9 @@ export default function Home() {
             />
           </GridItem>
         </Show>
-        <GridItem area={"main"}>
-          <GameGrid selectedGenre={selectedGenre} />
+        <GridItem area={"main"} paddingX={6}>
+            <PlatformSelector />
+            <GameGrid selectedGenre={selectedGenre} />
         </GridItem>
       </Grid>
     </div>

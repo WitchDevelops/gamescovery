@@ -8,8 +8,8 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { Game } from "@/types/cardTypes";
-import { PlatformIcons } from "@/components/PlatformIcons";
-import { MetacriticScore } from "@/components/MetacriticScore";
+import { PlatformIcons } from "@/components/atoms/PlatformIcons";
+import { MetacriticScore } from "@/components/atoms/MetacriticScore";
 import { getCroppedImgUrl } from "@/lib/services/imageResized";
 
 interface GameCardProps {

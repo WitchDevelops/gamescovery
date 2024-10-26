@@ -1,9 +1,9 @@
 import React from "react";
 import { useGames } from "@/lib/hooks/useGames";
-import { GameCard } from "@/components/GameCard";
+import { GameCard } from "@/components/mainGrid/GameCard";
 import { SimpleGrid } from "@chakra-ui/react";
-import { GameCardContainer } from "@/components/GameCardContainer";
-import { GameCardSkeleton } from "@/components/GameCardSkeleton";
+import { GameCardContainer } from "@/components/mainGrid/GameCardContainer";
+import { GameCardSkeleton } from "@/components/mainGrid/GameCardSkeleton";
 import { Genre } from "@/types/genreTypes";
 
 interface GameGridProps {
@@ -20,7 +20,6 @@ export const GameGrid: React.FC<GameGridProps> = ({ selectedGenre }) => {
 
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-        paddingX={10}
         spacing={3}
       >
         {isLoading &&
