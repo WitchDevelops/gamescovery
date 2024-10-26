@@ -1,15 +1,19 @@
 import React from "react";
 import { useGenres } from "@/lib/hooks/useGenres";
-import { HStack, List, ListItem, Image, Button } from "@chakra-ui/react";
+import { HStack, List, ListItem, Text, Image, Button } from "@chakra-ui/react";
 import { getCroppedImgUrl } from "@/lib/services/imageResized";
 import { GenreItemSkeleton } from "@/components/GenreItemSkeleton";
 import { Genre } from "@/types/genreTypes";
 
 interface GenreListProps {
   onGenreSelect: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-export const GenreList: React.FC<GenreListProps> = ({ onGenreSelect }) => {
+export const GenreList: React.FC<GenreListProps> = ({
+  onGenreSelect,
+  selectedGenre,
+}) => {
   const { data: genres, isLoading, error } = useGenres();
   const skeletons = [1, 2, 3, 4, 5, 6];
 
@@ -21,25 +25,44 @@ export const GenreList: React.FC<GenreListProps> = ({ onGenreSelect }) => {
         skeletons.map((skeleton) => <GenreItemSkeleton key={skeleton} />)}
 
       {genres.map((genre) => (
-        <ListItem key={genre.id} paddingY={2}>
-          <HStack>
-            <Image
-              src={getCroppedImgUrl(genre.image_background)}
-              alt={genre.name}
-              boxSize="32px"
-              borderRadius={8}
-              objectFit="cover"
-            />
-            <Button
-              onClick={() => {
-                onGenreSelect(genre);
-              }}
-              fontSize={"lg"}
-              variant={"link"}
-            >
-              {genre.name}
-            </Button>
-          </HStack>
+        <ListItem key={genre.id} paddingY={1}>
+          <Button
+            onClick={() => {
+              onGenreSelect(genre);
+            }}
+            variant={"link"}
+            width={"100%"}
+            display={"flex"}
+            justifyContent={"left"}
+            fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+            padding={2}
+            borderRadius={8}
+            gap={1}
+            cursor="pointer"
+            _hover={{ backgroundColor: "purple.200", color: "gray.900" }}
+            _active={{ backgroundColor: "purple.300", color: "gray.900" }}
+            background={
+              genre.id === selectedGenre?.id ? "purple.700" : "transparent"
+            }
+          >
+            <HStack>
+              <Image
+                src={getCroppedImgUrl(genre.image_background)}
+                alt={genre.name}
+                boxSize="32px"
+                borderRadius={8}
+                objectFit="cover"
+              />
+              <Text
+                fontSize={"lg"}
+                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                whiteSpace={"normal"}
+                textAlign={"left"}
+              >
+                {genre.name}
+              </Text>
+            </HStack>
+          </Button>
         </ListItem>
       ))}
     </List>

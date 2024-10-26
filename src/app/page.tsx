@@ -18,15 +18,18 @@ export default function Home() {
         }}
         templateColumns={{
           base: "1fr",
-          lg: "200px 1fr",
+          lg: "265px 1fr",
         }}
       >
         <GridItem area={"nav"}>
           <Navbar />
         </GridItem>
         <Show above="lg">
-          <GridItem area={"aside"} paddingX={5}>
-            <GenreList onGenreSelect={(genre) => setSelectedGenre(genre)} />
+          <GridItem area={"aside"} paddingStart={5}>
+            <GenreList
+              onGenreSelect={(genre) => setSelectedGenre(genre)}
+              selectedGenre={selectedGenre}
+            />
           </GridItem>
         </Show>
         <GridItem area={"main"}>

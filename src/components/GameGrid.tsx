@@ -12,7 +12,7 @@ interface GameGridProps {
 
 export const GameGrid: React.FC<GameGridProps> = ({ selectedGenre }) => {
   const { data: games, error, isLoading } = useGames(selectedGenre);
-  const skeletons = [1, 2, 3, 4, 5, 6];
+  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   return (
     <>
