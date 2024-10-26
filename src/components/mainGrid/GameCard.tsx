@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Card,
-  CardBody,
-  Heading,
-  // Image,
-  HStack,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Card, CardBody, Heading, HStack, VStack } from "@chakra-ui/react";
 import Image from "next/image";
 
 import { PlatformIcons } from "@/components/atoms/PlatformIcons";
@@ -19,7 +12,7 @@ interface GameCardProps {
 export const GameCard: React.FC<GameCardProps> = ({ game }) => {
   return (
     <Card height={"100%"}>
-      <div >
+      <Box>
         <Image
           src={getCroppedImgUrl(game.background_image)}
           alt={game.name}
@@ -27,22 +20,22 @@ export const GameCard: React.FC<GameCardProps> = ({ game }) => {
           height={400}
           placeholder={"blur"}
           blurDataURL={getCroppedImgUrl(game.background_image)}
-          style={{aspectRatio: "6/4", objectFit: "contain"}}
+          style={{ aspectRatio: "6/4", objectFit: "contain", width: "100%" }}
         />
-      </div>
+      </Box>
       <CardBody>
         <VStack
-          justifyContent={"space-between"}
+          justifyContent={"flex-start"}
           height={"100%"}
           alignItems={"flex-start"}
         >
-          <Heading fontSize={"2xl"}>{game.name}</Heading>
           <HStack justifyContent={"space-between"} width={"100%"}>
             <PlatformIcons
               platforms={game.parent_platforms.map((p) => p.platform)}
             />
             <MetacriticScore score={game.metacritic} />
           </HStack>
+          <Heading fontSize={"2xl"}>{game.name}</Heading>
         </VStack>
       </CardBody>
     </Card>
