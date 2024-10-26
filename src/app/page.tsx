@@ -9,10 +9,7 @@ import { GenreList } from "@/components/sideBar/GenreList";
 import { PlatformSelector } from "@/components/sortingDropdown/PlatformSelector";
 
 export default function Home() {
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
-    null
-  );
+  const [searchParams, setSearchParams] = useState<GameQuery>({} as GameQuery);
 
   return (
     <div>
@@ -32,20 +29,21 @@ export default function Home() {
         <Show above="lg">
           <GridItem area={"aside"} paddingStart={5}>
             <GenreList
-              onGenreSelect={(genre) => setSelectedGenre(genre)}
-              selectedGenre={selectedGenre}
+              onGenreSelect={(genre) =>
+                setSearchParams({ ...searchParams, genre })
+              }
+              selectedGenre={searchParams.genre}
             />
           </GridItem>
         </Show>
         <GridItem area={"main"} paddingX={6}>
           <PlatformSelector
-            selectedPlatform={selectedPlatform}
-            onSelectPlatform={(platform) => setSelectedPlatform(platform)}
+            selectedPlatform={searchParams.platform}
+            onSelectPlatform={(platform) =>
+              setSearchParams({ ...searchParams, platform })
+            }
           />
-          <GameGrid
-            selectedGenre={selectedGenre}
-            selectedPlatform={selectedPlatform}
-          />
+          <GameGrid searchParams={searchParams} />
         </GridItem>
       </Grid>
     </div>

@@ -6,19 +6,17 @@ import { GameCardContainer } from "@/components/mainGrid/GameCardContainer";
 import { GameCardSkeleton } from "@/components/mainGrid/GameCardSkeleton";
 
 interface GameGridProps {
-  selectedGenre: Genre | null;
-  selectedPlatform: Platform | null;
+  searchParams: GameQuery;
 }
 
 export const GameGrid: React.FC<GameGridProps> = ({
-  selectedGenre,
-  selectedPlatform,
+  searchParams
 }) => {
   const {
     data: games,
     error,
     isLoading,
-  } = useGames(selectedGenre, selectedPlatform);
+  } = useGames(searchParams);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   return (

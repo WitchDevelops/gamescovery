@@ -1,17 +1,16 @@
 import { useData } from "@/lib/hooks/useData";
 
 export const useGames = (
-  selectedGenre: Genre | null,
-  selectedPlatform: Platform | null
+  searchParams: GameQuery
 ) => {
   return useData<Game>(
     "/games",
     {
       params: {
-        genres: selectedGenre?.id,
-        platforms: selectedPlatform?.id,
+        genres: searchParams.genre?.id,
+        platforms: searchParams.platform?.id,
       },
     },
-    [selectedGenre, selectedPlatform]
+    [searchParams]
   );
 };

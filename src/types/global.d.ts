@@ -19,3 +19,8 @@ declare interface Platform {
   name: string;
   slug: string;
 }
+
+declare interface GameQuery {
+  genre: Genre | null;
+  platform: Platform | null;
+}
