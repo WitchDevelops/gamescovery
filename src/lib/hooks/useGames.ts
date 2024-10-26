@@ -1,6 +1,16 @@
 import { useData } from "@/lib/hooks/useData";
-import { Game } from "@/types/cardTypes";
 
-export const useGames = () => {
-  return useData<Game>("/games");
+export const useGames = (
+  searchParams: GameQuery
+) => {
+  return useData<Game>(
+    "/games",
+    {
+      params: {
+        genres: searchParams.genre?.id,
+        platforms: searchParams.platform?.id,
+      },
+    },
+    [searchParams]
+  );
 };

@@ -1,10 +1,16 @@
 "use client";
+
+import { useState } from "react";
 import { Grid, GridItem, Show } from "@chakra-ui/react";
-import { Navbar } from "@/components/Navbar";
-import { GameGrid } from "@/components/GameGrid";
-import { GenreList } from "@/components/GenreList";
+
+import { Navbar } from "@/components/navigation/Navbar";
+import { GameGrid } from "@/components/mainGrid/GameGrid";
+import { GenreList } from "@/components/sideBar/GenreList";
+import { PlatformSelector } from "@/components/sortingDropdown/PlatformSelector";
 
 export default function Home() {
+  const [searchParams, setSearchParams] = useState<GameQuery>({} as GameQuery);
+
   return (
     <div>
       <Grid
@@ -14,19 +20,30 @@ export default function Home() {
         }}
         templateColumns={{
           base: "1fr",
-          lg: "200px 1fr",
+          lg: "265px 1fr",
         }}
       >
         <GridItem area={"nav"}>
           <Navbar />
         </GridItem>
         <Show above="lg">
-          <GridItem area={"aside"} paddingX={5}>
-            <GenreList />
+          <GridItem area={"aside"} paddingStart={5}>
+            <GenreList
+              onGenreSelect={(genre) =>
+                setSearchParams({ ...searchParams, genre })
+              }
+              selectedGenre={searchParams.genre}
+            />
           </GridItem>
         </Show>
-        <GridItem area={"main"}>
-          <GameGrid />
+        <GridItem area={"main"} paddingX={6}>
+          <PlatformSelector
+            selectedPlatform={searchParams.platform}
+            onSelectPlatform={(platform) =>
+              setSearchParams({ ...searchParams, platform })
+            }
+          />
+          <GameGrid searchParams={searchParams} />
         </GridItem>
       </Grid>
     </div>
