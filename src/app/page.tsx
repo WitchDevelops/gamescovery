@@ -7,10 +7,15 @@ import { Navbar } from "@/components/navigation/Navbar";
 import { GameGrid } from "@/components/mainGrid/GameGrid";
 import { GenreList } from "@/components/sideBar/GenreList";
 import { Genre } from "@/types/genreTypes";
+import { Platform } from "@/types/platformTypes";
 import { PlatformSelector } from "@/components/sortingDropdown/PlatformSelector";
 
 export default function Home() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+    null
+  );
+
   return (
     <div>
       <Grid
@@ -35,8 +40,11 @@ export default function Home() {
           </GridItem>
         </Show>
         <GridItem area={"main"} paddingX={6}>
-            <PlatformSelector />
-            <GameGrid selectedGenre={selectedGenre} />
+          <PlatformSelector
+            selectedPlatform={selectedPlatform}
+            onSelectPlatform={(platform) => setSelectedPlatform(platform)}
+          />
+          <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} />
         </GridItem>
       </Grid>
     </div>
