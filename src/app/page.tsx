@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 
 import { Navbar } from "@/components/navigation/Navbar";
 import { GameGrid } from "@/components/mainGrid/GameGrid";
 import { GenreList } from "@/components/sideBar/GenreList";
 import { PlatformSelector } from "@/components/sortingDropdown/PlatformSelector";
+import { SortSelector } from "@/components/sortingDropdown/SortSelector";
 
 export default function Home() {
   const [searchParams, setSearchParams] = useState<GameQuery>({} as GameQuery);
@@ -37,12 +38,16 @@ export default function Home() {
           </GridItem>
         </Show>
         <GridItem area={"main"} paddingX={6}>
-          <PlatformSelector
-            selectedPlatform={searchParams.platform}
-            onSelectPlatform={(platform) =>
-              setSearchParams({ ...searchParams, platform })
-            }
-          />
+          <HStack marginBottom={6} spacing={4}>
+            <PlatformSelector
+              selectedPlatform={searchParams.platform}
+              onSelectPlatform={(platform) =>
+                setSearchParams({ ...searchParams, platform })
+              }
+            />
+            <SortSelector />
+          </HStack>
+
           <GameGrid searchParams={searchParams} />
         </GridItem>
       </Grid>
