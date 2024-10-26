@@ -4,8 +4,6 @@ import { GameCard } from "@/components/mainGrid/GameCard";
 import { SimpleGrid } from "@chakra-ui/react";
 import { GameCardContainer } from "@/components/mainGrid/GameCardContainer";
 import { GameCardSkeleton } from "@/components/mainGrid/GameCardSkeleton";
-import { Genre } from "@/types/genreTypes";
-import { Platform } from "@/types/platformTypes";
 
 interface GameGridProps {
   selectedGenre: Genre | null;
