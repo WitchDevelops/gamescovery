@@ -1,6 +1,6 @@
-import React from "react";
-import { useGenres } from "@/lib/hooks/useGenres";
 import { HStack, List, ListItem, Text, Image, Button } from "@chakra-ui/react";
+
+import { useGenres } from "@/lib/hooks/useGenres";
 import { getCroppedImgUrl } from "@/lib/services/imageResized";
 import { GenreItemSkeleton } from "@/components/sideBar/GenreItemSkeleton";
 
