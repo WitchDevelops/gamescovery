@@ -45,7 +45,12 @@ export default function Home() {
                 setSearchParams({ ...searchParams, platform })
               }
             />
-            <SortSelector />
+            <SortSelector
+              onSelectSort={(sortOrder) =>
+                setSearchParams({ ...searchParams, sortOrder })
+              }
+              sortOrder={searchParams.sortOrder}
+            />
           </HStack>
 
           <GameGrid searchParams={searchParams} />
