@@ -25,7 +25,11 @@ export default function Home() {
         }}
       >
         <GridItem area={"nav"}>
-          <Navbar />
+          <Navbar
+            onSearch={(searchText) =>
+              setSearchParams({ ...searchParams, searchText })
+            }
+          />
         </GridItem>
         <Show above="lg">
           <GridItem area={"aside"} paddingStart={5}>

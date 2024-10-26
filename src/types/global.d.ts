@@ -21,6 +21,7 @@ declare interface Platform {
 }
 
 declare interface GameQuery {
+  searchText?: string;
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;

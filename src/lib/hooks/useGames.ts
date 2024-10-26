@@ -5,6 +5,7 @@ export const useGames = (searchParams: GameQuery) => {
     "/games",
     {
       params: {
+        search: searchParams.searchText,
         genres: searchParams.genre?.id,
         platforms: searchParams.platform?.id,
         ordering: searchParams.sortOrder,
