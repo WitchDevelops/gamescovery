@@ -2,7 +2,15 @@
 
 import { Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { Grid, GridItem, HStack, Show, Button } from "@chakra-ui/react";
+import {
+  Grid,
+  GridItem,
+  Stack,
+  HStack,
+  Show,
+  Box,
+  Button,
+} from "@chakra-ui/react";
 
 import { Navbar } from "@/components/navigation/Navbar";
 import { GameGrid } from "@/components/mainGrid/GameGrid";
@@ -71,13 +79,13 @@ export default function Home() {
         </Show>
         <GridItem area={"main"} paddingX={6}>
           <GameHeading title={searchParamsObj} />
-          <HStack
+          <Stack
             marginBottom={6}
-            spacing={4}
-            alignContent={"space-between"}
             width={"100%"}
+            direction={{ base: "column", md: "row" }}
+            justifyContent={"space-between"}
           >
-            <HStack width={"100%"}>
+            <Stack direction={{ base: "column", md: "row" }}>
               <PlatformSelector
                 selectedPlatform={searchParamsObj.platform ?? null}
                 onSelectPlatform={(platform) =>
@@ -90,11 +98,11 @@ export default function Home() {
                 }
                 sortOrder={searchParamsObj.sortOrder}
               />
-            </HStack>
+            </Stack>
             <Button variant="solid" onClick={clearFilters}>
               Clear filters
             </Button>
-          </HStack>
+          </Stack>
           <GameGrid searchParams={searchParamsObj} />
         </GridItem>
       </Grid>

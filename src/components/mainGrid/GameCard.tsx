@@ -19,7 +19,7 @@ interface GameCardProps {
 }
 export const GameCard: React.FC<GameCardProps> = ({ game }) => {
   return (
-    <Card height={"100%"}>
+    <Card height={"100%"} width={"100%"}>
       <Box>
         <Image
           src={getCroppedImgUrl(game.background_image)}
@@ -43,7 +43,11 @@ export const GameCard: React.FC<GameCardProps> = ({ game }) => {
             />
             <MetacriticScore score={game.metacritic} />
           </HStack>
-          <HStack justifyContent={"space-between"} width={"100%"} color={"gray.400"}>
+          <HStack
+            justifyContent={"space-between"}
+            width={"100%"}
+            color={"gray.400"}
+          >
             <Text>{game.released}</Text>
             <Text>{game.rating}/5</Text>
           </HStack>
