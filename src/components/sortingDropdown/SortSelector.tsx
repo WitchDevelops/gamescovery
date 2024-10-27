@@ -13,7 +13,8 @@ export const SortSelector: React.FC<SortSelectorProps> = ({
 }) => {
   const sortOptions = [
     { value: "", label: "Relevance" },
-    { value: "name", label: "Name" },
+    { value: "name", label: "Name (ascending)" },
+    { value: "-name", label: "Name (descending)" },
     { value: "-rating", label: "Rating" },
     { value: "-metacritic", label: "Metacritic score (Best to worse)" },
     { value: "-released", label: "Date released (Newest first)" },
