@@ -12,7 +12,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
   return (
     <Stack p={4} spacing={6}>
       <HStack justifyContent={"space-between"}>
-        <Image src="/images/logo.webp" alt="logo" width={60} height={60} />
+        <Image src="/images/logo_1.png" alt="logo" width={100} height={100} />
         <Box
           display={{ base: "none", sm: "block" }}
           width={"100%"}
