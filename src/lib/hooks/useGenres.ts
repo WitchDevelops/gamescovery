@@ -1,5 +1,5 @@
-import { genreData } from "@/data/genreData";
+import { useData } from "@/lib/hooks/useData";
 
 export const useGenres = () => {
-  return { data: genreData, isLoading: false, error: null };
+  return useData<Genre>("/genres");
 };

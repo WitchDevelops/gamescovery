@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 
 import { Navbar } from "@/components/navigation/Navbar";
@@ -11,7 +11,21 @@ import { SortSelector } from "@/components/sortingDropdown/SortSelector";
 import { GameHeading } from "@/components/atoms/GameHeading";
 
 export default function Home() {
-  const [searchParams, setSearchParams] = useState<GameQuery>({} as GameQuery);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const setSearchParams = (params: GameQuery) => {
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    for (const [key, value] of Object.entries(params)) {
+      if (value) {
+        newSearchParams.set(key, value);
+      } else {
+        newSearchParams.delete(key);
+      }
+    }
+    router.push(`?${newSearchParams.toString()}`);
+  };
+
+  const searchParamsObj = Object.fromEntries(searchParams.entries());
 
   return (
     <div>
@@ -28,7 +42,7 @@ export default function Home() {
         <GridItem area={"nav"}>
           <Navbar
             onSearch={(searchText) =>
-              setSearchParams({ ...searchParams, searchText })
+              setSearchParams({ ...searchParamsObj, searchText })
             }
           />
         </GridItem>
@@ -36,30 +50,32 @@ export default function Home() {
           <GridItem area={"aside"} paddingStart={5}>
             <GenreList
               onGenreSelect={(genre) =>
-                setSearchParams({ ...searchParams, genre })
+                setSearchParams({
+                  ...searchParamsObj,
+                  genre,
+                })
               }
-              selectedGenre={searchParams.genre}
+              selectedGenre={searchParamsObj.genre ?? null}
             />
           </GridItem>
         </Show>
         <GridItem area={"main"} paddingX={6}>
-          <GameHeading title={searchParams} />
+          <GameHeading title={searchParamsObj} />
           <HStack marginBottom={6} spacing={4}>
             <PlatformSelector
-              selectedPlatform={searchParams.platform}
+              selectedPlatform={searchParamsObj.platform ?? null}
               onSelectPlatform={(platform) =>
-                setSearchParams({ ...searchParams, platform })
+                setSearchParams({ ...searchParamsObj, platform })
               }
             />
             <SortSelector
               onSelectSort={(sortOrder) =>
                 setSearchParams({ ...searchParams, sortOrder })
               }
-              sortOrder={searchParams.sortOrder}
+              sortOrder={searchParamsObj.sortOrder}
             />
           </HStack>
-
-          <GameGrid searchParams={searchParams} />
+          <GameGrid searchParams={searchParamsObj} />
         </GridItem>
       </Grid>
     </div>

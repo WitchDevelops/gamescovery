@@ -19,7 +19,7 @@ export const GameGrid: React.FC<GameGridProps> = ({ searchParams }) => {
 
   if (!isLoading && games.length === 0) {
     return (
-      <Text align={"center"}>
+      <Text align={"left"}>
         No games were found. Try changing your filters.
       </Text>
     );
