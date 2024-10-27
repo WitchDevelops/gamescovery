@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Grid, GridItem, HStack, Show, Button } from "@chakra-ui/react";
 
@@ -37,7 +38,7 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <Suspense>
       <Grid
         templateAreas={{
           base: `"nav" "main"`,
@@ -90,11 +91,13 @@ export default function Home() {
                 sortOrder={searchParamsObj.sortOrder}
               />
             </HStack>
-            <Button variant="solid" onClick={clearFilters}>Clear filters</Button>
+            <Button variant="solid" onClick={clearFilters}>
+              Clear filters
+            </Button>
           </HStack>
           <GameGrid searchParams={searchParamsObj} />
         </GridItem>
       </Grid>
-    </div>
+    </Suspense>
   );
 }
