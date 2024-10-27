@@ -1,5 +1,6 @@
-import { HStack } from "@chakra-ui/react";
+import { Stack, HStack, Box } from "@chakra-ui/react";
 import Image from "next/image";
+
 import { ColorModeSwitch } from "@/components/navigation/ColorModeSwitch";
 import { SearchInput } from "@/components/navigation/SearchInput";
 
@@ -9,10 +10,21 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
   return (
-    <HStack p={4} spacing={6}>
-      <Image src="/images/logo.webp" alt="logo" width={60} height={60} />
-      <SearchInput onSearch={onSearch} />
-      <ColorModeSwitch />
-    </HStack>
+    <Stack p={4} spacing={6}>
+      <HStack justifyContent={"space-between"}>
+        <Image src="/images/logo.webp" alt="logo" width={60} height={60} />
+        <Box
+          display={{ base: "none", sm: "block" }}
+          width={"100%"}
+          paddingInline={4}
+        >
+          <SearchInput onSearch={onSearch} />
+        </Box>
+        <ColorModeSwitch />
+      </HStack>
+      <Box display={{ base: "block", sm: "none" }}>
+        <SearchInput onSearch={onSearch} />
+      </Box>
+    </Stack>
   );
 };
