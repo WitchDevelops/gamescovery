@@ -1,7 +1,7 @@
 "use client";
 
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
-import theme from "@/lib/chakra/theme";
+import { theme } from "@/lib/chakra/theme";
 import { CacheProvider } from "@chakra-ui/next-js";
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";

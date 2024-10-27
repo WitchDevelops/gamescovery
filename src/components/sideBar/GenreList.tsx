@@ -38,11 +38,12 @@ export const GenreList: React.FC<GenreListProps> = ({
             borderRadius={8}
             gap={1}
             cursor="pointer"
-            _hover={{ backgroundColor: "purple.200", color: "gray.900" }}
-            _active={{ backgroundColor: "purple.300", color: "gray.900" }}
+            _hover={{ backgroundColor: "brand.700", color: "gray.50" }}
+            _active={{ backgroundColor: "brand.600", color: "gray.800" }}
             background={
-              genre.slug === selectedGenre ? "purple.700" : "transparent"
+              genre.slug === selectedGenre ? "brand.800" : "transparent"
             }
+            color={genre.slug === selectedGenre ? "gray.50" : "inherit"}
           >
             <HStack>
               <Image

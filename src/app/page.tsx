@@ -2,15 +2,7 @@
 
 import { Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import {
-  Grid,
-  GridItem,
-  Stack,
-  HStack,
-  Show,
-  Box,
-  Button,
-} from "@chakra-ui/react";
+import { Grid, GridItem, Stack, Show, Button } from "@chakra-ui/react";
 
 import { Navbar } from "@/components/navigation/Navbar";
 import { GameGrid } from "@/components/mainGrid/GameGrid";

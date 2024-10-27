@@ -45,8 +45,8 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
             onClick={clearSearchInput}
             cursor="pointer"
             borderRightRadius={20}
-            color={"purple.400"}
-            _hover={{ color: "purple.600" }}
+            color={"brand.700"}
+            _hover={{ color: "brand.600" }}
           >
             <BsXCircleFill />
           </InputRightElement>
