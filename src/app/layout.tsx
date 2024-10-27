@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "@/lib/chakra/providers";
 import { ReactQueryProvider } from "@/lib/react-query/ReactQueryProvider";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import React, { Suspense } from "react";
 
@@ -35,6 +36,7 @@ export default function RootLayout({
         <ReactQueryProvider>
           <Providers>
             <Suspense>{children}</Suspense>
+            <ReactQueryDevtools  />
           </Providers>
         </ReactQueryProvider>
       </body>
