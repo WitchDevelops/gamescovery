@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "@/lib/chakra/providers";
+
 import { Suspense } from "react";
 
 const geistSans = localFont({

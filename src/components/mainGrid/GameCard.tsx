@@ -9,6 +9,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import Image from "next/image";
+import { useColorMode } from "@chakra-ui/react";
 
 import { PlatformIcons } from "@/components/atoms/PlatformIcons";
 import { MetacriticScore } from "@/components/atoms/MetacriticScore";
@@ -18,6 +19,7 @@ interface GameCardProps {
   game: Game;
 }
 export const GameCard: React.FC<GameCardProps> = ({ game }) => {
+  const { colorMode } = useColorMode();
   return (
     <Card height={"100%"} width={"100%"}>
       <Box>
@@ -31,7 +33,9 @@ export const GameCard: React.FC<GameCardProps> = ({ game }) => {
           style={{ aspectRatio: "6/4", objectFit: "contain", width: "100%" }}
         />
       </Box>
-      <CardBody>
+      <CardBody
+        backgroundColor={colorMode === "light" ? "gray.50" : "gray.700"}
+      >
         <VStack
           justifyContent={"flex-start"}
           height={"100%"}
