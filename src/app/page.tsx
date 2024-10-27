@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import { Grid, GridItem, HStack, Show, Button } from "@chakra-ui/react";
 
 import { Navbar } from "@/components/navigation/Navbar";
 import { GameGrid } from "@/components/mainGrid/GameGrid";
@@ -26,6 +26,15 @@ export default function Home() {
   };
 
   const searchParamsObj = Object.fromEntries(searchParams.entries());
+
+  const clearFilters = () => {
+    setSearchParams({
+      searchText: "",
+      genre: null,
+      platform: null,
+      sortOrder: "",
+    });
+  };
 
   return (
     <div>
@@ -61,19 +70,27 @@ export default function Home() {
         </Show>
         <GridItem area={"main"} paddingX={6}>
           <GameHeading title={searchParamsObj} />
-          <HStack marginBottom={6} spacing={4}>
-            <PlatformSelector
-              selectedPlatform={searchParamsObj.platform ?? null}
-              onSelectPlatform={(platform) =>
-                setSearchParams({ ...searchParamsObj, platform })
-              }
-            />
-            <SortSelector
-              onSelectSort={(sortOrder) =>
-                setSearchParams({ ...searchParams, sortOrder })
-              }
-              sortOrder={searchParamsObj.sortOrder}
-            />
+          <HStack
+            marginBottom={6}
+            spacing={4}
+            alignContent={"space-between"}
+            width={"100%"}
+          >
+            <HStack width={"100%"}>
+              <PlatformSelector
+                selectedPlatform={searchParamsObj.platform ?? null}
+                onSelectPlatform={(platform) =>
+                  setSearchParams({ ...searchParamsObj, platform })
+                }
+              />
+              <SortSelector
+                onSelectSort={(sortOrder) =>
+                  setSearchParams({ ...searchParams, sortOrder })
+                }
+                sortOrder={searchParamsObj.sortOrder}
+              />
+            </HStack>
+            <Button variant="solid" onClick={clearFilters}>Clear filters</Button>
           </HStack>
           <GameGrid searchParams={searchParamsObj} />
         </GridItem>

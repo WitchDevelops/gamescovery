@@ -4,6 +4,8 @@ declare interface Game {
   background_image: string;
   parent_platforms: { platform: ParentPlatform }[];
   metacritic: number;
+  released: string;
+  rating: number;
 }
 
 declare interface Genre {
