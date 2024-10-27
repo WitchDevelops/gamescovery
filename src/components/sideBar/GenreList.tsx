@@ -5,8 +5,8 @@ import { getCroppedImgUrl } from "@/lib/services/imageResized";
 import { GenreItemSkeleton } from "@/components/sideBar/GenreItemSkeleton";
 
 interface GenreListProps {
-  onGenreSelect: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  selectedGenre: string | null;
+  onGenreSelect: (genre: string) => void;
 }
 
 export const GenreList: React.FC<GenreListProps> = ({
@@ -27,13 +27,13 @@ export const GenreList: React.FC<GenreListProps> = ({
         <ListItem key={genre.id} paddingY={1}>
           <Button
             onClick={() => {
-              onGenreSelect(genre);
+              onGenreSelect(genre.slug);
             }}
             variant={"link"}
             width={"100%"}
             display={"flex"}
             justifyContent={"left"}
-            fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+            fontWeight={genre.slug === selectedGenre ? "bold" : "normal"}
             padding={2}
             borderRadius={8}
             gap={1}
@@ -41,7 +41,7 @@ export const GenreList: React.FC<GenreListProps> = ({
             _hover={{ backgroundColor: "purple.200", color: "gray.900" }}
             _active={{ backgroundColor: "purple.300", color: "gray.900" }}
             background={
-              genre.id === selectedGenre?.id ? "purple.700" : "transparent"
+              genre.slug === selectedGenre ? "purple.700" : "transparent"
             }
           >
             <HStack>
@@ -54,7 +54,7 @@ export const GenreList: React.FC<GenreListProps> = ({
               />
               <Text
                 fontSize={"lg"}
-                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                fontWeight={genre.slug === selectedGenre ? "bold" : "normal"}
                 whiteSpace={"normal"}
                 textAlign={"left"}
               >

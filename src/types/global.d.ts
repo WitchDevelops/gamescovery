@@ -4,6 +4,8 @@ declare interface Game {
   background_image: string;
   parent_platforms: { platform: ParentPlatform }[];
   metacritic: number;
+  released: string;
+  rating: number;
 }
 
 declare interface Genre {
@@ -22,7 +24,7 @@ declare interface Platform {
 
 declare interface GameQuery {
   searchText?: string;
-  genre: Genre | null;
-  platform: Platform | null;
-  sortOrder: string;
+  genre?: string | null;
+  platform?: string | null;
+  sortOrder?: string;
 }

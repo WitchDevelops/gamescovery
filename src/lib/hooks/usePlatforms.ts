@@ -1,5 +1,5 @@
-import { platformData } from "@/data/platformData";
+import { useData } from "@/lib/hooks/useData";
 
 export const usePlatforms = () => {
-  return { data: platformData, isLoading: false, error: null };
+  return useData<Platform>("/platforms");
 };

@@ -1,5 +1,13 @@
 import React from "react";
-import { Box, Card, CardBody, Heading, HStack, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Card,
+  CardBody,
+  Heading,
+  HStack,
+  VStack,
+  Text,
+} from "@chakra-ui/react";
 import Image from "next/image";
 
 import { PlatformIcons } from "@/components/atoms/PlatformIcons";
@@ -34,6 +42,10 @@ export const GameCard: React.FC<GameCardProps> = ({ game }) => {
               platforms={game.parent_platforms.map((p) => p.platform)}
             />
             <MetacriticScore score={game.metacritic} />
+          </HStack>
+          <HStack justifyContent={"space-between"} width={"100%"} color={"gray.400"}>
+            <Text>{game.released}</Text>
+            <Text>{game.rating}/5</Text>
           </HStack>
           <Heading fontSize={"2xl"}>{game.name}</Heading>
         </VStack>
